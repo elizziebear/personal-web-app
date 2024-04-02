@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jane Mark ICS4U1-1</title>
+
+    <link href='https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Silkscreen:wght@400;700&display=swap' rel='stylesheet'>
+
+    <style>
+/* i'm going to comment this for readability cause there's a lot*/
+
+/* identifying key colours */
+        :root {
+	--bg: #ccd5ae;
+	--box: #d4a373;
+	--light: #dbba98;
+	--dark: #b58657;
+	--body: #251418;
+	--alt: #f1dbc4;
+    }
+
+/* stopping the nav bar from spilling out of window (stopping horizontal scroll bar), also font and bg colour */
+    html {
+	overflow-x: hidden;
+    background-color: var(--bg);
+    font-family: "Pixelify Sans", sans-serif;
+    }
+
+
+    body {
+        margin: 0;
+        padding: 20px;
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        width: 1050px;
+        margin: auto;
+        max-width: 100%;
+    }
+
+/* this is for the text box (on the right) */
+    .box {
+        margin: auto;
+        max-width: 100%;
+        display: grid;
+        padding: 20px;
+        position: relative;
+        border-radius: 10px;
+        border: 2px solid;
+        background: var(--box);
+        box-shadow: 5px 5px 3px inset rgba(215, 211, 211, 0.65),
+            5px 10px 10px 5px inset var(--light), -6px -6px 1px inset var(--dark),
+            3px 3px 0 rgba(0, 0, 0, 0.1), 5px 5px 0 rgba(0, 0, 0, 0.1),
+            7px 7px 0 rgba(0, 0, 0, 0.1), 9px 9px 0 rgba(0, 0, 0, 0.1);        
+    }
+
+/* this is for the image box(es) (on the left)*/
+    .box-left {
+        margin: auto;
+        max-width: 100%;
+        display: grid;
+        padding: 20px;
+        position: relative;
+        border-radius: 10px;
+        border: 2px solid;
+        background: var(--box);
+        box-shadow: 5px 5px 3px inset rgba(215, 211, 211, 0.65),
+            5px 10px 10px 5px inset var(--light), -6px -6px 1px inset var(--dark),
+            3px 3px 0 rgba(0, 0, 0, 0.1), 5px 5px 0 rgba(0, 0, 0, 0.1),
+            7px 7px 0 rgba(0, 0, 0, 0.1), 9px 9px 0 rgba(0, 0, 0, 0.1);
+        margin: auto;
+    }
+
+/* these two are the coloured parts of the boxes */
+    .main-box {
+        width: 300px;
+        min-height: 300px;
+        max-width: 92%;
+        margin: 20px auto;
+    }
+
+    .box-inner {
+        padding: 20px;
+        background: var(--alt);
+        border-radius: 3px;
+        border: 2px solid;
+        box-shadow: 2px 2px 5px inset rgba(0, 0, 0, 0.5), -3px -3px 5px rgba(0,0,0,0.25), 4px 4px 5px rgba(255,255,255,0.75);
+        position: relative;
+        z-index: 3;
+        max-width: 100%;
+    }
+
+/* styling for nav bar at top */
+    nav {
+        width: 100%;
+        border-top: 2px solid;
+        margin-bottom: 20px;
+        border-bottom: 2px solid;
+        text-align: center;
+        background: var(--light);
+        position: sticky;
+        top: 0;
+        z-index: 9;
+    }
+
+    nav::before {
+        content: "";
+        box-shadow: 5px 5px 3px inset rgba(255, 255, 255, 0.65),
+            5px 10px 10px 5px inset var(--light), -6px -6px 1px inset var(--dark),
+            3px 3px 0 rgba(0, 0, 0, 0.1), 5px 5px 0 rgba(0, 0, 0, 0.1),
+            7px 7px 0 rgba(0, 0, 0, 0.1), 9px 9px 0 rgba(0, 0, 0, 0.1);
+        position: absolute;
+        top: 0;
+        left: -20px;
+        width: calc(100% + 40px);
+        height: 100%;
+        z-index: -1;
+    }
+
+    .nav-wrap {
+        display: flex;
+        width: calc(100% - 20px);
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    nav a {
+        padding: 10px;
+        flex-grow: 1;
+        color: inherit;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-decoration: none;
+        border-right: 2px solid;
+        transition: all 0.15s steps(2);
+    }
+
+    nav a:first-of-type{
+        border-left: 2px solid;
+    }
+
+    nav a:focus,
+    nav a:hover {
+        background: var(--light);
+        box-shadow: -2px -2px 2px 2px inset rgba(255, 255, 255, 0.5),
+            2px 2px 1px 2px inset var(--dark);
+    }
+
+/* text stuff */
+    h1 {
+        width: 100%;
+        text-align: center;
+        font-family: "Pixelify Sans", sans-serif;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h2, h3, h4 {
+        margin: 0.5em 0;
+    }
+
+    h3 {
+        border-bottom: 2px solid;
+        padding-bottom: 0.5em;
+    }
+
+    .column-wrap {
+        margin: 0 auto;
+        max-width: max-content;
+    }
+
+    .footer{
+        width: 100%;
+        text-align: center;
+    }
+
+
+/* styling for buttons in the image boxes */
+    .button-container {
+        place-items: center;
+    }
+
+    .square-button {
+        box-shadow: 3px 3px 1px inset #e9caab,
+        1px 2px 10px 5px inset var(--light), -6px -6px 1px inset var(--dark),
+        3px 3px 0 rgba(0, 0, 0, 0.1), 5px 5px 0 rgba(0, 0, 0, 0.1),
+        5px 5px 0 rgba(0, 0, 0, 0.1), 9px 9px 0 rgba(0, 0, 0, 0.1);
+        width: 40px;
+        height: 30px;
+        background-color: #d4a373;
+        cursor: pointer;
+        margin: 5px;
+        display:inline-block;
+        text-align:center;
+        padding-top: 10px;
+        font-family: "Pixelify Sans", sans-serif;
+        font-weight: bold;
+        font-size: 15px;
+        text-decoration: none;
+    }
+
+    .square-button:hover {
+        background: var(--light);
+        box-shadow: -2px -2px 2px 2px inset rgba(255, 255, 255, 0.5), 2px 2px 1px 2px inset var(--dark);
+    }
+
+    .radio-button{
+        display: none;
+    }
+
+/* allows images to show using buttons (top left box) */
+    #cmdSelectSprite1:checked ~ .sprite1{
+        display: block;
+    }
+
+    #cmdSelectSprite2:checked ~ .sprite2{
+        display: block;
+    }
+
+    #cmdSelectSprite3:checked ~ .sprite3{
+        display: block;
+    }
+
+    #cmdSelectSprite4:checked ~ .sprite4{
+        display: block;
+    }
+
+    #cmdSelectSprite1:checked ~ .spriteDefault,
+    #cmdSelectSprite2:checked ~ .spriteDefault,
+    #cmdSelectSprite3:checked ~ .spriteDefault,
+    #cmdSelectSprite4:checked ~ .spriteDefault{
+        display: none;
+    }
+    
+    .spriteDefault{
+        text-align: center;
+        padding-top: 15px;
+    }
+
+    .sprite1,.sprite2,.sprite3,.sprite4 {
+        display: none;
+        text-align: center;
+        padding-top: 15px;
+    }
+
+/* allows images to appear using buttons (bottom left box) */
+
+    #cmdSelectImage1:checked ~ .img1{
+        display: block;
+    }
+
+    #cmdSelectImage2:checked ~ .img2{
+        display: block;
+    }
+
+    #cmdSelectImage3:checked ~ .img3{
+        display: block;
+    }
+
+    #cmdSelectImage4:checked ~ .img4{
+        display: block;
+    }
+
+    #cmdSelectImage1:checked ~ .imgDefault,
+    #cmdSelectImage2:checked ~ .imgDefault,
+    #cmdSelectImage3:checked ~ .imgDefault,
+    #cmdSelectImage4:checked ~ .imgDefault{
+        display: none;
+    }
+    
+    .imgDefault{
+        text-align: center;
+        padding-top: 15px;
+    }
+
+    .img1,.img2,.img3,.img4 {
+        display: none;
+        text-align: center;
+        padding-top: 15px;
+    }
+
+
+/*link styling*/
+    a:hover {
+        color: #ccd5ae;
+    }
+
+    a:link, a:visited {
+        color:#251418;
+        text-decoration: none;
+    }
+    </style>
+
+</head>
+
+<body id="top">
+
+<header>
+    <h1>Jane Mark</h1>
+
+    <nav>
+        <div class="nav-wrap">
+            <a href="index.html"><span>home</span></a>
+            <a href="about-me.html"><span>about me</span></a>
+            <a href="my-work.html"><span>my work</span></a>
+            <!-- put stuff in this eventually maaayybe -->
+            <a href="ICS4U1.html"><span>ICS4U1</span></a>
+            <a href="culminating.html"><span>culminating?</span></a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="column-wrap">
+        <div class="box main-box">
+            <div class="box-inner"style="height: 265px">
+                <div class="box for sprite" style="height: 230px;">
+                    <div class=".button-container">
+                        <input type="radio" name="selectedSprite" id="cmdSelectSprite1" class="radio-button">
+                        <label for="cmdSelectSprite1" class="square-button">(:</label>
+                        <input type="radio" name="selectedSprite" id="cmdSelectSprite2" class="radio-button">
+                        <label for="cmdSelectSprite2" class="square-button">D:</label>
+                        <input type="radio" name="selectedSprite" id="cmdSelectSprite3" class="radio-button">
+                        <label for="cmdSelectSprite3" class="square-button">D:(</label>
+                        <input type="radio" name="selectedSprite" id="cmdSelectSprite4" class="radio-button">
+                        <label for="cmdSelectSprite4" class="square-button">:D</label>
+
+                    <div class="spriteDefault"> 
+                        <img src="assets/pixel-art-normal.png" alt="pixel art of happy girl">
+                    </div>
+                
+                    <div class="sprite1"> 
+                        <img src="assets/pixel-art-normal.png" alt="pixel art of happy girl">
+                    </div>
+
+                    <div class="sprite2">
+                        <img src="assets/pixel-art-sad.png" alt="pixel art of sad girl">
+                    </div>
+
+                    <div class="sprite3">
+                        <img src="assets/pixel-art-angry.png" alt="pixel art of angry girl">
+                    </div>
+
+                    <div class="sprite4">
+                        <img src="assets/pixel-art-happy.png" alt="pixel art of very happy girl">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box main-box">
+            <div class="box-inner"style="height: 265px">
+                <div class="box-left">
+                    <div class=".button-container">
+                        <input type="radio" name="selectedImage" id="cmdSelectImage1" class="radio-button">
+                        <label for="cmdSelectImage1" class="square-button">1</label>
+                        <input type="radio" name="selectedImage" id="cmdSelectImage2" class="radio-button">
+                        <label for="cmdSelectImage2" class="square-button">2</label>
+                        <input type="radio" name="selectedImage" id="cmdSelectImage3" class="radio-button">
+                        <label for="cmdSelectImage3" class="square-button">3</label>
+                        <input type="radio" name="selectedImage" id="cmdSelectImage4" class="radio-button">
+                        <label for="cmdSelectImage4" class="square-button">4</label>
+
+                    <div class="imgDefault"> 
+                        <img src="assets/aboutme-image-default.png" alt="a mirror selfie">
+                    </div>
+                
+                    <div class="img1"> 
+                        <img src="assets/aboutme-image-1.png" alt="two guitars, and electric and an acoustic">
+                    </div>
+
+                    <div class="img2">
+                        <img src="assets/aboutme-image-2.png" alt="pixel art of a city">
+                    </div>
+
+                    <div class="img3">
+                        <img src="assets/aboutme-image-3.png" alt="friends on a go-karting podium">
+                    </div>
+
+                    <div class="img4">
+                        <img src="assets/aboutme-image-4.png" alt="pixel art of a sword">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box main-box" style="width: 650px;">
+        <div class="box-inner">
+
+            <div class="box frame">
+                <h3>About Me</h3>
+                <p>My name is Jane Mark and I'm a grade 12 student at Western Technical Commercial School.<br><br>In my spare time, I like to play guitar, write, garden, play video games, sketch, and do pixel art. My most prized possession is probably my telecaster squier, or my pc, which have both served me well over the years.<br><br>My favourite games to play with friends include Valorant, Overwatch, League, Seige, and Guilty Gear Strive. I am not good.<br><br>I've enjoyed taking computer science throughout high school, my first introduction being in ninth grade, as it was a mandatory course for students in the robotics program. The bulk of my experience is in Python and some Java. Next year, I'll be studying engineering in university, specifically mechanical engineering, so I don't currently see myself entering a field where comp sci is fundamental, but I still think it's a good skill to have and quite applicable to many engineering endeavours.<br><br>Some notes on the images:<br>- image #1 is a picture of my electric and acoustic guitars<br>- image #2 is a pixel art cityscape<br>- image #3 is a picture of some friends on a podium at a go karting place<br>- image #4 is a pixel art sword</p>
+            </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        Created by <a href="https://instagram.com/elizziebear" style="color:#b58657;">Jane Mark,
+        </a>, 2024<br><a href="mailto:jane.elizabeth.mark@gmail.com" style="color: #b58657;">jane.elizabeth.mark@gmail.com</a>
+    </footer>
+
+</main>
+</body>
+</html>
