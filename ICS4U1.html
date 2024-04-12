@@ -10,8 +10,8 @@
     <style>
 /* i'm going to comment this for readability cause there's a lot*/
 
-/* identifying key colours */
-        :root {
+/* key colours */
+    :root {
 	--bg: #ccd5ae;
 	--box: #d4a373;
 	--light: #dbba98;
@@ -20,20 +20,15 @@
 	--alt: #f1dbc4;
     }
 
-/* stopping the nav bar from spilling out of window (stopping horizontal scroll bar), also font and bg colour */
+    /*font and bg colour */
     html {
-	overflow-x: hidden;
-    background-color: var(--bg);
-    font-family: "Pixelify Sans", sans-serif;
+        background-color: var(--bg);
+        font-family: "Pixelify Sans", sans-serif;
     }
-
 
     body {
         margin: 0;
-        padding: 20px;
         position: relative;
-        width: 100%;
-        min-height: 100vh;
     }
 
     main {
@@ -41,162 +36,151 @@
         flex-wrap: wrap;
         width: 1050px;
         margin: auto;
-        max-width: 100%;
     }
 
-/* this is for the text box (on the right) */
+    /*this main box styling (the frame of the boxes)*/
     .box {
-        margin: auto;
-        max-width: 100%;
+        /*without "display: grid" the box borders don't stay one size*/
         display: grid;
+        /*the padding is determining the size of the border*/
         padding: 20px;
         position: relative;
         border-radius: 10px;
         border: 2px solid;
         background: var(--box);
-        box-shadow: 5px 5px 3px inset rgba(215, 211, 211, 0.65),
+        box-shadow: 5px 5px 3px inset #d7d3d3a6,
             5px 10px 10px 5px inset var(--light), -6px -6px 1px inset var(--dark),
-            3px 3px 0 rgba(0, 0, 0, 0.1), 5px 5px 0 rgba(0, 0, 0, 0.1),
-            7px 7px 0 rgba(0, 0, 0, 0.1), 9px 9px 0 rgba(0, 0, 0, 0.1);        
-    }
-
-/* this is for the image box(es) (on the left)*/
-    .box-left {
-        margin: auto;
-        max-width: 100%;
-        display: grid;
-        padding: 20px;
-        position: relative;
-        border-radius: 10px;
-        border: 2px solid;
-        background: var(--box);
-        box-shadow: 5px 5px 3px inset rgba(215, 211, 211, 0.65),
-            5px 10px 10px 5px inset var(--light), -6px -6px 1px inset var(--dark),
-            3px 3px 0 rgba(0, 0, 0, 0.1), 5px 5px 0 rgba(0, 0, 0, 0.1),
-            7px 7px 0 rgba(0, 0, 0, 0.1), 9px 9px 0 rgba(0, 0, 0, 0.1);
-        margin: auto;
-    }
-
-/* these two are the coloured parts of the boxes */
-    .main-box {
-        width: 300px;
+            3px 3px 0 #0000001a, 5px 5px 0 #0000001a,
+            7px 7px 0 #0000001a, 9px 9px 0 #0000001a;        
+        
         min-height: 300px;
         max-width: 92%;
-        margin: 20px auto;
+        /*margins do the spacing between the three boxes*/
+        margin-left: 10px;
+        margin-bottom: 30px;
     }
 
+    /* this is for the inermost box (dark)*/
+    .box-content {
+        display: grid;
+        padding: 20px;
+        position: relative;
+        border-radius: 10px;
+        border: 2px solid;
+        background: var(--box);
+        box-shadow: 5px 5px 3px inset #d7d3d3a6,
+            5px 10px 10px 5px inset var(--light), -6px -6px 1px inset var(--dark),
+            3px 3px 0 #0000001a, 5px 5px 0 #0000001a,
+            7px 7px 0 #0000001a, 9px 9px 0 #0000001a;
+        margin: auto;
+    }
+
+    /*this is for the off-white filling of each box*/
     .box-inner {
         padding: 20px;
         background: var(--alt);
         border-radius: 3px;
         border: 2px solid;
-        box-shadow: 2px 2px 5px inset rgba(0, 0, 0, 0.5), -3px -3px 5px rgba(0,0,0,0.25), 4px 4px 5px rgba(255,255,255,0.75);
+        box-shadow: 2px 2px 5px inset #00000080, -3px -3px 5px #00000040, 4px 4px 5px #ffffff80;
         position: relative;
         z-index: 3;
-        max-width: 100%;
     }
 
 /* styling for nav bar at top */
+
     nav {
-        width: 100%;
         border-top: 2px solid;
-        margin-bottom: 20px;
+        border: 2px solid;
+        margin-bottom: 35px;
         border-bottom: 2px solid;
         text-align: center;
         background: var(--light);
         position: sticky;
-        top: 0;
-        z-index: 9;
     }
 
+    /*this overlay is the shading on the nav bar*/
     nav::before {
+        /*"content: "";" is blank because I don't want anything to display over bar, shading breaks without having the blank statement written though*/
         content: "";
-        box-shadow: 5px 5px 3px inset rgba(255, 255, 255, 0.65),
+        box-shadow: 5px 5px 3px inset #ffffff80,
             5px 10px 10px 5px inset var(--light), -6px -6px 1px inset var(--dark),
-            3px 3px 0 rgba(0, 0, 0, 0.1), 5px 5px 0 rgba(0, 0, 0, 0.1),
-            7px 7px 0 rgba(0, 0, 0, 0.1), 9px 9px 0 rgba(0, 0, 0, 0.1);
+            3px 3px 0 #0000001a, 5px 5px 0 #0000001a,
+            7px 7px 0 #0000001a, 9px 9px 0 #0000001a;
         position: absolute;
-        top: 0;
-        left: -20px;
-        width: calc(100% + 40px);
+        left: 0px;
+        /*so that the shading is the same size as nav*/
+        width: 100%;
         height: 100%;
         z-index: -1;
     }
 
+    /*size of nav bar buttons, wrap after 1000px*/
     .nav-wrap {
         display: flex;
-        width: calc(100% - 20px);
         max-width: 1000px;
-        margin: 0 auto;
+        margin: auto;
     }
-
+    
+    /*styling for each button*/
     nav a {
         padding: 10px;
         flex-grow: 1;
-        color: inherit;
         text-transform: uppercase;
         font-weight: bold;
         text-decoration: none;
         border-right: 2px solid;
-        transition: all 0.15s steps(2);
+        /*when hovered, button transitions to hover version over time period, i like how it looks*/
+        transition: all 0.2s steps(2);
     }
 
+    /*on leftmost button, line on left*/
     nav a:first-of-type{
         border-left: 2px solid;
     }
 
-    nav a:focus,
-    nav a:hover {
+    /*hover styling*/
+    nav a:focus, nav a:hover {
         background: var(--light);
-        box-shadow: -2px -2px 2px 2px inset rgba(255, 255, 255, 0.5),
+        box-shadow: -2px -2px 2px 2px inset #ffffff80,
             2px 2px 1px 2px inset var(--dark);
     }
 
-/* text stuff */
+    /*title*/
     h1 {
-        width: 100%;
         text-align: center;
         font-family: "Pixelify Sans", sans-serif;
         text-transform: uppercase;
+        /*don't know why i need to say "margin: 0;", but it looks bad without it*/
         margin: 0;
-        padding: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
-    h2, h3, h4 {
+    h2 {
+        /*size of margin and padding relative, so use em*/
         margin: 0.5em 0;
-    }
-
-    h3 {
         border-bottom: 2px solid;
         padding-bottom: 0.5em;
-    }
-
-    .column-wrap {
-        margin: 0 auto;
-        max-width: max-content;
     }
 
     .footer{
         width: 100%;
         text-align: center;
+        padding-bottom: 10px;
     }
 
-
-/* styling for buttons in the image boxes */
-    .button-container {
-        place-items: center;
-    }
-
+    /* styling for buttons in the image boxes */
     .square-button {
-        box-shadow: 3px 3px 1px inset #e9caab,
-        1px 2px 10px 5px inset var(--light), -6px -6px 1px inset var(--dark),
-        3px 3px 0 rgba(0, 0, 0, 0.1), 5px 5px 0 rgba(0, 0, 0, 0.1),
-        5px 5px 0 rgba(0, 0, 0, 0.1), 9px 9px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: 3px 3px 3px inset #ffffff80,
+            5px 10px 10px 5px inset var(--light), -3px -3px 1px inset var(--dark),
+            1px 1px 0 #0000001a, 2px 2px 0 #0000001a,
+            2px 2px 0 #0000001a, 4px 4px 0 #0000001a;
         width: 40px;
         height: 30px;
+        border: 2px solid;
         background-color: #d4a373;
         cursor: pointer;
-        margin: 5px;
+        margin: 3px;
         display:inline-block;
         text-align:center;
         padding-top: 10px;
@@ -204,18 +188,21 @@
         font-weight: bold;
         font-size: 15px;
         text-decoration: none;
+        /*when hovered, button transitions to hover version over time period, i like how it looks*/
+        transition: all 0.2s steps(2);
     }
 
     .square-button:hover {
         background: var(--light);
-        box-shadow: -2px -2px 2px 2px inset rgba(255, 255, 255, 0.5), 2px 2px 1px 2px inset var(--dark);
+        box-shadow: -2px -2px 2px 2px inset #ffffff80, 2px 2px 1px 2px inset var(--dark);
     }
 
+    /*hides the circles of the radio buttons so i can have aesthetic square ones*/
     .radio-button{
         display: none;
     }
 
-/* allows images to show using buttons (top left box) */
+    /*this next chunk allows images to show using checked state of hidden radio buttons (top left box)*/
     #cmdSelectSprite1:checked ~ .sprite1{
         display: block;
     }
@@ -232,6 +219,7 @@
         display: block;
     }
 
+    /*hides default sprite/image if any of the buttons are checked*/
     #cmdSelectSprite1:checked ~ .spriteDefault,
     #cmdSelectSprite2:checked ~ .spriteDefault,
     #cmdSelectSprite3:checked ~ .spriteDefault,
@@ -239,19 +227,20 @@
         display: none;
     }
     
+    /*styling of default sprite*/
     .spriteDefault{
         text-align: center;
         padding-top: 15px;
     }
 
+    /*stying of other sprites, same except starts off hidden*/
     .sprite1,.sprite2,.sprite3,.sprite4 {
         display: none;
         text-align: center;
         padding-top: 15px;
     }
 
-/* allows images to appear using buttons (bottom left box) */
-
+    /*also allows images to appear using buttons (bottom left box)*/
     #cmdSelectImage1:checked ~ .img1{
         display: block;
     }
@@ -268,6 +257,7 @@
         display: block;
     }
 
+    /*hides default sprite/image if any of the buttons are checked*/
     #cmdSelectImage1:checked ~ .imgDefault,
     #cmdSelectImage2:checked ~ .imgDefault,
     #cmdSelectImage3:checked ~ .imgDefault,
@@ -287,15 +277,12 @@
     }
 
 
-/*link styling*/
-    a:hover {
-        color: #ccd5ae;
-    }
-
+    /*link styling*/
     a:link, a:visited {
         color:#251418;
         text-decoration: none;
     }
+
     </style>
 
 </head>
@@ -318,24 +305,35 @@
 </header>
 
 <main>
-    <div class="column-wrap">
-        <div class="box main-box">
+    <div>
+        <!--box for the sprites-->
+        <div class="box">
             <div class="box-inner"style="height: 265px">
-                <div class="box for sprite" style="height: 230px;">
-                    <div class=".button-container">
+                <div class="box-content" style="height: 230px;">
+                    <div>
+                        <!-- 
+                        - to use css to get buttons to switch images, used radio buttons because they have checked property
+                        - styling of radio button makes it hidden, and then styling of it's label makes it look like a button
+                        - based on id of radio button, css can respond to checked property to unhide images
+                        -->
                         <input type="radio" name="selectedSprite" id="cmdSelectSprite1" class="radio-button">
                         <label for="cmdSelectSprite1" class="square-button">(:</label>
+
                         <input type="radio" name="selectedSprite" id="cmdSelectSprite2" class="radio-button">
                         <label for="cmdSelectSprite2" class="square-button">D:</label>
+
                         <input type="radio" name="selectedSprite" id="cmdSelectSprite3" class="radio-button">
                         <label for="cmdSelectSprite3" class="square-button">D:(</label>
+
                         <input type="radio" name="selectedSprite" id="cmdSelectSprite4" class="radio-button">
                         <label for="cmdSelectSprite4" class="square-button">:D</label>
 
+                    <!--this is the default image-->
                     <div class="spriteDefault"> 
                         <img src="assets/pixel-art-normal.png" alt="pixel art of happy girl">
                     </div>
                 
+                    <!--these are the sprites-->
                     <div class="sprite1"> 
                         <img src="assets/pixel-art-normal.png" alt="pixel art of happy girl">
                     </div>
@@ -355,10 +353,17 @@
                 </div>
             </div>
         </div>
-        <div class="box main-box">
+
+        <!--box for images-->
+        <div class="box">
             <div class="box-inner"style="height: 265px">
-                <div class="box-left">
-                    <div class=".button-container">
+                <div class="box-content">
+                    <div>
+                        <!-- 
+                        - to use css to get buttons to switch images, used radio buttons because they have checked property
+                        - styling of radio button makes it hidden, and then styling of it's label makes it look like a button
+                        - based on id of radio button, css can respond to checked property to unhide images
+                        -->
                         <input type="radio" name="selectedImage" id="cmdSelectImage1" class="radio-button">
                         <label for="cmdSelectImage1" class="square-button">1</label>
                         <input type="radio" name="selectedImage" id="cmdSelectImage2" class="radio-button">
@@ -368,10 +373,12 @@
                         <input type="radio" name="selectedImage" id="cmdSelectImage4" class="radio-button">
                         <label for="cmdSelectImage4" class="square-button">4</label>
 
+                    <!--default image-->
                     <div class="imgDefault"> 
                         <img src="assets/index-image-default.png" alt="reads: 'try clicking the buttons'">
                     </div>
                 
+                    <!--other images (show when label(square button) is clicked)-->
                     <div class="img1"> 
                         <img src="assets/index-image-1.png" alt="reads: 'an image would be here, for example'">
                     </div>
@@ -393,24 +400,21 @@
         </div>
     </div>
 
-    <div class="box main-box" style="width: 650px;">
+    <!--box for text-->
+    <div class="box" style="width: 650px;">
         <div class="box-inner">
-
-            <div class="box frame">
-                <h3>ICS4U1 - nothing here yet!</h3>
-                <p>This is a place to potentially put course work!</p>
+            <div class="box-content">
+                <h2>ICS4U1 - Nothing Here Yet!</h2>
+                <p>This is a place to put ICS4U1 course work</p>
             </div>
-
-            </div>
-
         </div>
     </div>
 
+    <!--footer-->
     <div class="footer">
         Created by <a href="https://instagram.com/elizziebear" style="color:#b58657;">Jane Mark,
         </a>, 2024<br><a href="mailto:jane.elizabeth.mark@gmail.com" style="color: #b58657;">jane.elizabeth.mark@gmail.com</a>
-    </footer>
-
+    </div>
 </main>
 </body>
 </html>
