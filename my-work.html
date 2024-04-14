@@ -6,11 +6,12 @@
     <title>Jane Mark ICS4U1-1</title>
 
     <link href='https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Silkscreen:wght@400;700&display=swap' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323">
 
     <style>
     /* i'm going to comment this for readability cause there's a lot*/
     
-    /* key colours */
+        /* key colours */
         :root {
         --bg: #ccd5ae;
         --box: #d4a373;
@@ -19,7 +20,13 @@
         --body: #251418;
         --alt: #f1dbc4;
         }
-    
+
+        /*text highlight*/
+        ::selection {
+        color: var(--dark);
+        background: var(--bg);
+        }
+
         /*font and bg colour */
         html {
             background-color: var(--bg);
@@ -148,7 +155,6 @@
         /*title*/
         h1 {
             text-align: center;
-            font-family: "Pixelify Sans", sans-serif;
             text-transform: uppercase;
             /*don't know why i need to say "margin: 0;", but it looks bad without it*/
             margin: 0;
@@ -169,8 +175,9 @@
             padding-bottom: 10px;
         }
     
-        /* styling for buttons in the image boxes */
-        .square-button {
+        /*only reason that there needs to be seperate classes for image box vs. pixel art box is that i want them to have different fonts, emoticon faces for pixel art box buttons looks better in the alternative font (silkscreen)*/
+        /* styling for buttons in the pixel art box*/
+        .square-button-pixel {
             box-shadow: 3px 3px 3px inset #ffffff80,
                 5px 10px 10px 5px inset var(--light), -3px -3px 1px inset var(--dark),
                 1px 1px 0 #0000001a, 2px 2px 0 #0000001a,
@@ -184,15 +191,42 @@
             display:inline-block;
             text-align:center;
             padding-top: 10px;
-            font-family: "Pixelify Sans", sans-serif;
+            font-family: "Silkscreen", sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            text-decoration: none;
+            /*when hovered, button transitions to hover version over time period, i like how it looks*/
+            transition: all 0.2s steps(2);
+        }
+
+        /*same thing but for image box*/
+        .square-button-image {
+            box-shadow: 3px 3px 3px inset #ffffff80,
+                5px 10px 10px 5px inset var(--light), -3px -3px 1px inset var(--dark),
+                1px 1px 0 #0000001a, 2px 2px 0 #0000001a,
+                2px 2px 0 #0000001a, 4px 4px 0 #0000001a;
+            width: 40px;
+            height: 30px;
+            border: 2px solid;
+            background-color: #d4a373;
+            cursor: pointer;
+            margin: 3px;
+            display:inline-block;
+            text-align:center;
+            padding-top: 10px;
             font-weight: bold;
             font-size: 15px;
             text-decoration: none;
             /*when hovered, button transitions to hover version over time period, i like how it looks*/
             transition: all 0.2s steps(2);
         }
-    
-        .square-button:hover {
+
+        .square-button-pixel:hover {
+            background: var(--light);
+            box-shadow: -2px -2px 2px 2px inset #ffffff80, 2px 2px 1px 2px inset var(--dark);
+        }
+
+        .square-button-image:hover {
             background: var(--light);
             box-shadow: -2px -2px 2px 2px inset #ffffff80, 2px 2px 1px 2px inset var(--dark);
         }
@@ -317,13 +351,13 @@
                         - based on id of radio button, css can respond to checked property to unhide images
                         -->
                         <input type="radio" name="selectedSprite" id="cmdSelectSprite1" class="radio-button">
-                        <label for="cmdSelectSprite1" class="square-button">(:</label>
+                        <label for="cmdSelectSprite1" class="square-button-pixel">(:</label>
                         <input type="radio" name="selectedSprite" id="cmdSelectSprite2" class="radio-button">
-                        <label for="cmdSelectSprite2" class="square-button">D:</label>
+                        <label for="cmdSelectSprite2" class="square-button-pixel">D:</label>
                         <input type="radio" name="selectedSprite" id="cmdSelectSprite3" class="radio-button">
-                        <label for="cmdSelectSprite3" class="square-button">D:(</label>
+                        <label for="cmdSelectSprite3" class="square-button-pixel">D:<</label>
                         <input type="radio" name="selectedSprite" id="cmdSelectSprite4" class="radio-button">
-                        <label for="cmdSelectSprite4" class="square-button">:D</label>
+                        <label for="cmdSelectSprite4" class="square-button-pixel">:D</label>
 
                     <!--default image-->
                     <div class="spriteDefault"> 
@@ -362,13 +396,13 @@
                         - based on id of radio button, css can respond to checked property to unhide images
                         -->
                         <input type="radio" name="selectedImage" id="cmdSelectImage1" class="radio-button">
-                        <label for="cmdSelectImage1" class="square-button">1</label>
+                        <label for="cmdSelectImage1" class="square-button-image">1</label>
                         <input type="radio" name="selectedImage" id="cmdSelectImage2" class="radio-button">
-                        <label for="cmdSelectImage2" class="square-button">2</label>
+                        <label for="cmdSelectImage2" class="square-button-image">2</label>
                         <input type="radio" name="selectedImage" id="cmdSelectImage3" class="radio-button">
-                        <label for="cmdSelectImage3" class="square-button">3</label>
+                        <label for="cmdSelectImage3" class="square-button-image">3</label>
                         <input type="radio" name="selectedImage" id="cmdSelectImage4" class="radio-button">
-                        <label for="cmdSelectImage4" class="square-button">4</label>
+                        <label for="cmdSelectImage4" class="square-button-image">4</label>
 
                     <!--default image-->
                     <div class="imgDefault"> 
